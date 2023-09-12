@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block tittle %}New Recipe{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between ">
+    <h1>Welcome, {{user_session.first_name}}</h1>
+    <div>
+        <a href="/recipes" class="btn btn-info mt-2">back to recipes</a>
+        <a href="/logout" class="btn btn-info mt-2">Log out</a>
+    </div>
+</div>
+<h3>{{recipe.name}}</h3>
+<h6>Posted By {{ recipe.user.first_name }} {{recipe.user.last_name}}</h6>
+
+<div class="card text-bg-info mb-3">
+    <h3 class="card-header">{{recipe.name}}: </h3>
+    <div class="card-body">
+        <p class="card-text"><b>Description:</b> {{recipe.description}}</p>
+        <p class="card-text"><b>Under 30 minutes?: </b>{% if recipe.under_thirty_min == True %}Yes{% elif recipe.under_thirty_min == False %}No{% endif %}</p>
+        <p class="card-text"><b>Instructions: </b>{{recipe.instructions}}</p>
+        <p class="card-text"><b>Date made: </b>{{recipe.date_made}}</p>
+    </div>
+</div>
+
+{% endblock %}
+{% block algo %}
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        {% include 'register.html' %}
+    </div>
+
+    <div  class="col">
+        {% include 'login.html' %}
+    </div>
+</div>
+{% endblock %}

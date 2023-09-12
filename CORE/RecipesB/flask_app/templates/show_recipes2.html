@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Recipes{% endblock %}
+{% block content %}
+<h1>Welcome, </h1>
+<div class="d-flex justify-content-between">
+    <h3>All posted recipes.</h3>
+    <div>
+        <a class="btn btn-info" href="/recipes/new">+ Create</a>
+        <a class="btn btn-info" href="/logout">Log out</a>
+    </div>
+</div>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Under 30 minutes</th>
+            <th scope="col">Posted By</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">
+        {% for recipe in recipes %}
+        <tr>
+            <td scope="row">{{recipe.name}}</td>
+            <td scope="row">
+                {% if recipe.under_thirty_min == True %}Yes{% elif recipe.under_thirty_min == False %}No{% endif %}
+            </td>
+            <td scope="row">{{ recipe.user.first_name }} {{recipe.user.last_name}}</td>
+            <td scope="row">
+                <div class="btn-group" role="group">
+                    {% if recipe.user == user in session %}{% endif %}
+                    <a href="/recipes/{{recipe.id}}" class="btn btn-success ms-1" type="button">View recipe</a>
+                    <a href="/recipes/edit/{{recipe.id}}" class="btn btn-primary ms-1" type="button">Edit</a>
+                    <a href="/recipes/delete/{{recipe.id}}" class="btn btn-danger ms-1" type="button">Delete</a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

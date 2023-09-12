@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}New Recipe{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between ">
+    <h1>Add a new recipe.</h1>
+    <div>
+        <a href="/recipes" class="btn btn-info mt-2">back to recipes</a>
+        <a href="/logout" class="btn btn-info mt-2">Log out</a>
+    </div>
+</div>
+<div class="row">
+    <div class="card p-4">
+        <div class="card-body">
+            <h4 class="card-title text-center"></h4>
+            <form action="/recipes/create" method="post" class="mt-4">
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" id="name" name="name" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea name="description" class="form-control"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="instructions" class="form-label">Instructions</label>
+                            <textarea name="instructions" class="form-control" rows="8"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-5"></div>
+                        <div class="mb-5 ">
+                            <label for="date_made" class="form-label">Date Cooked/Made</label>
+                            <input type="date" name="date_made" class="form-control">
+                        </div>
+
+                        <div class="mb-5">
+                            <label for="date_made" class="form-label">Under 30 minutes?</label>
+                            <div>
+                                <input type="radio" name="under_thirty_min" id="yes" value="1">
+                                <label for="yes">Yes</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="under_thirty_min" id="no" value="0">
+                                <label for="no">No</label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary float-end">Submit</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
